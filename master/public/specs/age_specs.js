@@ -3,7 +3,7 @@ var Age = require('../age.js');
 
 describe('Tests all of age', function(){
 
-	it('Can be created, gives age in ms correctly', function(done){
+	xit('Can be created, gives age in ms correctly', function(done){
 
 		var a = new Age();
 		expect(a.age()).to.equal(0);

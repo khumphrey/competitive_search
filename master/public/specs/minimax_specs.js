@@ -118,6 +118,7 @@ describe('Testing some basic functions in the minimax evaluation function', func
 			s = s.move(6)
 			var heuristicValue = heuristic(s, 'x');
 			var minimaxValue = minimax(s, 32, 'x');
+			console.log('heuristicValue', heuristicValue, 'minimaxValue', minimaxValue)
 			expect(typeof heuristicValue == 'number').to.equal(true);
 			expect(typeof minimaxValue == 'number').to.equal(true);
 			expect(heuristicValue == minimaxValue).to.equal(true);;

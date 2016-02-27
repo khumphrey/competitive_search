@@ -3,7 +3,7 @@ var State = require('../state.js')
 
 describe('All the tests', function(){
 
-	it('Enables you to make a state and move', function(){
+	xit('Enables you to make a state and move', function(){
 
 		var temp = new State();
 		expect(temp.lastMovePlayer).to.equal(undefined);
@@ -17,7 +17,7 @@ describe('All the tests', function(){
 		
 	});
 
-	it('Stops you when the game is over--vertical', function(){
+	xit('Stops you when the game is over--vertical', function(){
 		//Set up a game which is over.
 		var temp = new State();
 		for(var x = 0; x < 3; x++){
@@ -39,7 +39,7 @@ describe('All the tests', function(){
 		expect(temp.legalMoves().length).to.equal(0);
 	});
 
-	it('Stops you when the game is over--horizontal', function(){
+	xit('Stops you when the game is over--horizontal', function(){
 		//Set up a game which is over.
 		var temp = new State();
 		for(var x = 0; x < 3; x++){
@@ -61,7 +61,7 @@ describe('All the tests', function(){
 		expect(temp.legalMoves().length).to.equal(0);
 	});
 
-	it('Stops you when the game is over--diagonal, one angle', function(){
+	xit('Stops you when the game is over--diagonal, one angle', function(){
 		//Set up a game which is over.
 		var temp = new State();
 		temp = temp.move(0); //x
@@ -88,7 +88,7 @@ describe('All the tests', function(){
 		expect(temp.legalMoves().length).to.equal(0);
 	});
 
-	it('Stops you when the game is over--diagonal, other angle', function(){
+	xit('Stops you when the game is over--diagonal, other angle', function(){
 		//Set up a game which is over.
 		var temp = new State();
 		temp = temp.move(6); //x
@@ -122,7 +122,7 @@ describe('All the tests', function(){
 		expect(temp.legalMoves().length).to.equal(0);
 	});
 
-	it('Throws an error when you try an illegal move--because game is over', function(){
+	xit('Throws an error when you try an illegal move--because game is over', function(){
 		//Set up a game which is over.
 		var temp = new State();
 		temp = temp.move(6); //x
@@ -146,7 +146,7 @@ describe('All the tests', function(){
 		expect(fn).to.throw(Error);
 	});
 
-	it('Throws an error when you try an illegal move--because game is over', function(){
+	xit('Throws an error when you try an illegal move--because game is over', function(){
 		//Set up a game which is over.
 		var temp = new State();
 		temp = temp.move(6); //x
@@ -170,7 +170,7 @@ describe('All the tests', function(){
 		expect(fn).to.throw(Error);
 	});
 
-	it('Throws an error when you try an illegal move--beause theres no space', function(){
+	xit('Throws an error when you try an illegal move--beause theres no space', function(){
 		//Set up a game which is over.
 		var temp = new State();
 		temp = temp.move(0); //x

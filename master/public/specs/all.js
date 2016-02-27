@@ -3,3 +3,4 @@ require('./utils_specs.js')
 require('./playingfield_specs.js')
 require('./fieldsocket_specs.js')
 require('./minimax_specs.js');
+require('./state_specs.js');

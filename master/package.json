@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha public/specs/all.js",
     "start": "node remote_server.js"
   },
   "author": "James Tillman <James.Tillman.7@gmail.com> (https://github.com/jctillman)",

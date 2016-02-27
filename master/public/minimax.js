@@ -20,7 +20,7 @@
     After all, it makes perfectly legal moves just with
     the code below...
 	*/
-	var DEPTH = 6;
+	var DEPTH = 3;
 	var makeMove = function(state){
 
 		//To get all legal moves.
@@ -37,7 +37,13 @@
 
 		//You'll want to change this...		
 		//Currently moves randomly.
-		return allLegalMoves[Math.floor(Math.random()*allLegalMoves.length)];
+		return max(allLegalMoves, function(move) {
+			var suc = state.move(move)
+			return minimax(suc, DEPTH, playerMoving)
+		})
+		return 0
+
+		// return allLegalMoves[Math.floor(Math.random()*allLegalMoves.length)];
 	}
 
 
@@ -80,6 +86,27 @@
 	*/
 	var heuristic = function(state, maximizingPlayer){
 		//Need some code here.
+		var minPlayer = maximizingPlayer == 'x' ? 'o' : 'x',
+				maxPlayer = maximizingPlayer || state.nextMovePlayer,
+				fours = 4*(state.numLines(4, maxPlayer) - state.numLines(4, minPlayer)),
+				threes = 3*(state.numLines(3, maxPlayer) - state.numLines(3, minPlayer)),
+				twos = 2*(state.numLines(2, maxPlayer) - state.numLines(2, minPlayer));
+		
+		//if someone won then return 100 for max player and -100 for min; if draw return 0	
+		if (state.someoneWon()) {
+			return state.winner() == max ? 100 : -100
+		} else if(state.isDraw()) {
+			return 0
+		}
+
+		//if there are 3 in a row -- does it have an opening at the end of the 3
+		//are there 2 in a row -- does it have an opening at the end
+		//are there many openings in the middle
+		if (max == 'x') {
+			return twos+threes + fours + 0
+			// (2*state.numLines(2, 'x')) + (3*state.numLines(3, 'x')) - (2*state.numLines(2, 'o')) - (3*state.numLines(3, 'o')) + 0			
+		} 
+		return -twos - threes - fours - 0
 	}
 
 
@@ -110,6 +137,16 @@
 	var minimax = function(state, depth, maximizingPlayer){
 		var possibleStates = state.nextStates();
 		var currentPlayer = state.nextMovePlayer;
+		if (depth == 0 || possibleStates.length == 0) return heuristic(state, maximizingPlayer)
+		else if (currentPlayer == maximizingPlayer) {
+			return possibleStates.reduce(function(largestValueSoFar, aState){
+				return Math.max(largestValueSoFar, minimax(aState, depth-1, maximizingPlayer))
+			}, -10000)
+		} else {
+			return possibleStates.reduce(function(smallestValueSoFar, aState){
+				return Math.min(smallestValueSoFar, minimax(aState, depth-1, maximizingPlayer))
+			}, 10000)
+		}
 	}
 
 
@@ -134,6 +171,7 @@
 		*/
 		var minimaxAB = function(state, depth, alpha, beta){
 			//Need some code here.
+
 		}
 		return minimaxAB(state, depth, -10000,10000)
 	}	

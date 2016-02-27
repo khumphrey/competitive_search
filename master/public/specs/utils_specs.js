@@ -2,7 +2,7 @@ var expect = require('chai').expect;
 var util = require('../utils.js');
 
 describe('Testing all utility functions', function(){
-	it('Tests the shuffle', function(){
+	xit('Tests the shuffle', function(){
 		var arr = [1,2,3,4,5,6,7,8,9,10];
 		var shuffled = util.shuffle(arr);
 		var times = 0
@@ -12,14 +12,14 @@ describe('Testing all utility functions', function(){
 		expect(times < 5).to.equal(true);
 	})
 
-	it('Tests the remove', function(){
+	xit('Tests the remove', function(){
 		var arr = [1,2,3,4,5,6,7,8,9,10];
 		var removed = util.remove(arr, 5);
 		expect(removed[4]).to.equal(6);
 	})
 
 
-	it('Tests the indexMatching', function(){
+	xit('Tests the indexMatching', function(){
 
 		var arr = [1,2,3,4,5,6]
 		var dex = util.indexMatching(arr, function(n){
@@ -28,11 +28,11 @@ describe('Testing all utility functions', function(){
 		expect(dex).to.equal(3);
 	})
 
-	it('Tests the now', function(){
+	xit('Tests the now', function(){
 		expect(util.now()).to.equal((new Date()).getTime());
 	});
 
-	it('Tests that time thing', function(done){
+	xit('Tests that time thing', function(done){
 		var now = util.now();
 		setTimeout(function(){
 			var newNow = util.now();
